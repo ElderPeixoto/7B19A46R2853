@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convite para a Barbara ❤️</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  body{font-family:'Nunito',system-ui,sans-serif;background:linear-gradient(160deg,#3d0a1a 0%,#6e1230 55%,#8e1b3e 100%);min-height:100vh;background-attachment:fixed}
+  h1,h2{font-family:'Playfair Display',Georgia,serif}
+  .card{position:relative;z-index:10;background:#fff;color:#4a0d1f;border-radius:1.5rem;box-shadow:0 25px 50px -12px #0007;padding:1.5rem}
+  .card>*+*{margin-top:1.1rem}
+  .card h1{font-size:1.75rem;font-weight:800;color:#9f1239;line-height:1.2}
+  .card h2{font-size:1.1rem;font-weight:700;color:#9f1239}
+  .ctr{text-align:center}
+  .row{display:flex;gap:.75rem}.row>*{flex:1}
+  .note{font-size:.75rem;background:#fdf2f8;border:1px solid #fbcfe8;border-radius:.75rem;padding:.5rem .75rem}
+  .err{color:#be123c;font-weight:600;font-size:.875rem}
+  .heart{position:fixed;pointer-events:none;z-index:0}
+  .heart{bottom:-40px;opacity:.25;animation:float linear infinite}
+  @keyframes float{to{transform:translateY(-115vh) rotate(25deg)}}
+  .opt{width:100%;text-align:left;border:2px solid #fbcfe8;border-radius:1rem;padding:.75rem 1rem;background:#fff;color:#4a0d1f;font-weight:600;transition:.15s;display:block}
+  .opt.sel,.opt:has(input:checked){background:#fdf2f8;border-color:#be185d;box-shadow:0 0 0 3px #fbcfe888}
+  .opt:active{transform:scale(.99)}
+  .opt.off{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+  .day{border:2px solid #fbcfe8;border-radius:.75rem;padding:.55rem 0;background:#fff;color:#4a0d1f;font-weight:700;transition:.15s}
+  .day.sel{background:#be185d;color:#fff;border-color:#be185d}
+  .day.off-date{opacity:.3;cursor:not-allowed;background:#f8fafc;border-color:#e2e8f0;text-decoration:line-through}
+  .btn{border-radius:9999px;padding:.8rem 1.4rem;font-weight:700;transition:.15s}
+  .btn:active{transform:scale(.97)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .pri{background:#be185d;color:#fff}
+  .sec{background:#fce7f3;color:#831843}
+  .fld{width:100%;border:2px solid #fbcfe8;border-radius:1rem;padding:.7rem 1rem;background:#fff;color:#4a0d1f}
+  .fld:focus,.opt:focus-visible,.btn:focus-visible,.day:focus-visible{outline:3px solid #f472b6;outline-offset:2px}
+  #toast{transition:.3s;transform:translate(-50%,-30px);opacity:0}
+  #toast.show{transform:translate(-50%,0);opacity:1}
+  #peek{animation:peek 4s ease-in-out infinite}
+  @keyframes peek{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-6px) rotate(4deg)}}
+  .conf{position:absolute;left:50%;top:60%;pointer-events:none;font-size:18px;line-height:1}
+  @media (prefers-reduced-motion:reduce){.heart,#peek{animation:none}}
+</style>
+</head>
+<body class="text-rose-50">
+<div id="hearts" aria-hidden="true"></div>
+<div id="toast" class="fixed top-4 left-1/2 z-50 bg-white text-rose-800 font-bold rounded-full shadow-2xl px-5 py-3 text-sm max-w-[90vw] text-center pointer-events-none"></div>
+
+<div id="celebrate" class="hidden fixed inset-0 z-50 bg-black/70 flex items-center justify-center" onclick="this.classList.add('hidden')">
+  <div class="text-center">
+    <div class="font-black text-white leading-none" style="font-family:'Playfair Display',serif;font-size:11rem;text-shadow:0 8px 0 #e30613,0 0 40px #e30613">L</div>
+    <div class="text-white text-4xl font-extrabold mt-2 tracking-wide">FAZ O L!</div>
+    <div class="text-pink-200 mt-3 text-sm">13/13 ⭐️ toque para fechar</div>
+  </div>
+</div>
+
+<main id="main" class="relative z-10 max-w-md mx-auto px-4 pt-20 pb-44">
+
+<!-- ================= BARBARA ================= -->
+<div id="barbara">
+<div id="peek" aria-hidden="true" class="absolute right-8 select-none" style="top:-4.4rem;z-index:0;width:6.5rem;height:5.5rem">
+<svg viewBox="0 0 100 85" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="22" cy="52" rx="9" ry="14" fill="#fff"/><ellipse cx="78" cy="52" rx="9" ry="14" fill="#fff"/>
+<circle cx="50" cy="48" r="26" fill="#f0c7a2"/>
+<path d="M24 52c0 22 12 33 26 33s26-11 26-33c-6 8-14 10-26 10S30 60 24 52z" fill="#fff"/>
+<path d="M40 64q10 5 20 0q-10-6-20 0z" fill="#f0c7a2"/>
+<path d="M33 52q17-12 34 0" fill="#fff" stroke="#fff" stroke-width="3"/>
+<circle cx="40" cy="47" r="5" fill="#fff" stroke="#999" stroke-width=".8"/><circle cx="60" cy="47" r="5" fill="#fff" stroke="#999" stroke-width=".8"/>
+<circle cx="38.5" cy="48.5" r="2.4" fill="#222"/><circle cx="58.5" cy="48.5" r="2.4" fill="#222"/>
+<path d="M33 40q7-5 14-1M53 39q7-4 14 1" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="50" cy="32" rx="44" ry="8" fill="#ecdcab"/>
+<path d="M28 32c0-20 8-28 22-28s22 8 22 28z" fill="#f4e8bd"/>
+<path d="M28 30h44v5H28z" fill="#2a2a2a"/>
+</svg></div>
+
+<section id="p1" class="card">
+  <h1>Oi Barbara! Você aceita um date com o Elder? 💘</h1>
+  <div class="space-y-3">
+    <h2>🙋‍♂️ Sobre mim</h2>
+    <p class="text-sm leading-relaxed">Tenho ataxia (SCA1). Ela afeta um pouco a mobilidade física e posso precisar do seu ombro de vez em quando, mas garanto que ao vivo sou bem melhor do que qualquer pesquisa na internet!</p>
+    <button class="opt" data-ata="ok">Por mim tudo bem ❤️</button>
+    <button class="opt" data-ata="res">Tenho ressalvas 😅</button>
+    <p class="note text-sm font-medium text-rose-900">🚗 <b>A proposta do date:</b> você vem de Uber até a minha casa (eu pago!), de lá a gente vai jantar e, na volta, lá na frente, você vai poder escolher melhor o que quer fazer. 😉</p>
+  </div>
+  <div id="blk-when" class="space-y-3">
+    <h2>📅 Quando?</h2>
+    <input id="date" type="hidden">
+    <div class="border-2 border-pink-200 rounded-2xl p-3 bg-white" role="group" aria-label="Data do encontro">
+      <p class="text-center font-bold text-rose-800 mb-2">Novembro 2026</p>
+      <div class="grid grid-cols-7 gap-1 text-center text-[11px] font-bold text-rose-700 mb-1"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span></div>
+      <div id="cal" class="grid grid-cols-7 gap-1"></div>
+    </div>
+    <select id="time" class="fld" aria-label="Horário">
+      <option value="">Escolha o horário</option>
+      <option>20:00</option><option>20:30</option><option>21:00</option>
+    </select>
+  </div>
+  <div id="blk-where" class="space-y-3">
+    <h2>🍴 Onde?</h2>
+    <p class="note">📌 Escolha o restaurante que preferir e eu faço a reserva!</p>
+    <div class="opt" role="button" tabindex="0" data-rest="Vignoli">🍝 Vignoli <a class="ml-1 text-pink-700 underline text-sm" href="https://www.instagram.com/vignolioficial/" target="_blank" rel="noopener">@vignolioficial</a></div>
+    <div class="opt" role="button" tabindex="0" data-rest="Fuji Lounge">🍣 Fuji Lounge <a class="ml-1 text-pink-700 underline text-sm" href="https://www.instagram.com/fujilounge/" target="_blank" rel="noopener">@fujilounge</a></div>
+  </div>
+  <p id="err1" class="err hidden"></p>
+  <div class="row">
+    <button id="yes" class="btn pri">Sim 💖</button>
+    <button id="no" class="btn sec">Não 😅</button>
+  </div>
+</section>
+
+<section id="no-s" class="card ctr hidden">
+  <p class="text-2xl font-bold text-rose-800" style="font-family:'Playfair Display',serif">Respeito sua opinião, mas é uma opinião burra! 😅</p>
+  <div class="row">
+    <button class="btn sec" data-go="p1" data-back>⬅️ Mudar de ideia</button>
+    <button id="conclude-no" class="btn pri">Concluir ✅</button>
+  </div>
+</section>
+
+<section id="refuse" class="card ctr hidden">
+  <div class="text-6xl">👋</div>
+  <h1>Até mais!</h1>
+  <p>Resposta enviada com sucesso. ✨</p>
+  <button class="btn sec" data-reset>⬅️ Recomeçar</button>
+</section>
+
+<!-- ETAPA 1 DA PERGUNTA PICANTE: CLICOU NO BOTÃO, ENTRA NA PÁGINA DELE -->
+<section id="pic" class="card hidden">
+  <h1>🌶️ Pergunta picante</h1>
+  <p class="text-lg">E se o clima esquentar depois do jantar... o que você prefere? 🌶️</p>
+  <div class="space-y-3">
+    <button class="opt ctr" data-pic-open="sim">
+      <span class="block text-base">Meu Quarto (Comigo) 🔥</span>
+      <span class="block text-xs font-normal text-pink-700 mt-1">Saiba mais +</span>
+    </button>
+    <button class="opt ctr" data-pic-open="nao">
+      <span class="block text-base">Meu Quarto (Sem mim) 😇</span>
+      <span class="block text-xs font-normal text-pink-700 mt-1">Saiba mais +</span>
+    </button>
+    <button class="opt ctr" data-pic-open="uber">
+      <span class="block text-base">Prefiro voltar pra casa de Uber à noite 🚗</span>
+      <span class="block text-xs font-normal text-pink-700 mt-1">Saiba mais +</span>
+    </button>
+  </div>
+  <div class="row">
+    <button class="btn sec" data-go="p1" data-back>⬅️ Voltar</button>
+  </div>
+</section>
+
+<!-- PÁGINA DETALHE: MEU QUARTO (COMIGO) -->
+<section id="pic-sim" class="card hidden">
+  <h1>🔥 Meu Quarto (Comigo)</h1>
+  <p class="note text-sm font-medium text-rose-900">✨ Você gosta de estrelas? Conheço um lugar que tem 5... 😉</p>
+  <div class="opt sel">
+    <div class="flex items-center gap-2">
+      <b>Meu Quarto (Comigo) ⭐⭐⭐⭐⭐</b>
+    </div>
+    <span class="block text-xs font-normal text-rose-800 mt-1">Todo o tempo do mundo, comidas, bebidas, doces à vontade e higiene decente.. só qualidade!</span>
+  </div>
+  <p class="note">✨ Eu cuido de tudo, pode deixar comigo... 😉</p>
+  <div class="row">
+    <button class="btn sec" data-go="pic" data-back>⬅️ Voltar</button>
+    <button class="btn pri" data-confirm-pic="sim">Escolher essa ✅</button>
+  </div>
+</section>
+
+<!-- PÁGINA DETALHE: MEU QUARTO (SEM MIM) -->
+<section id="pic-nao" class="card hidden">
+  <h1>😇 Meu Quarto (Sem mim)</h1>
+  <p class="note text-sm">Que pena... mas sem problemas! O importante é aproveitarmos o jantar e as boas conversas! O resto fica para a próxima. 😉✨</p>
+  <div class="opt sel">
+    <div class="flex items-center gap-2">
+      <b>Meu Quarto (Sem mim) 😇</b>
+    </div>
+    <span class="block text-xs font-normal text-rose-800 mt-1">Tudo que tem no meu quarto (tempo, comidas, bebidas, doces e higiene decente), só que eu não dormiria com você: você dormiria sozinha e, no outro dia, iria para casa, porque à noite eu acho perigoso demais.</span>
+  </div>
+  <div class="row">
+    <button class="btn sec" data-go="pic" data-back>⬅️ Voltar</button>
+    <button class="btn pri" data-confirm-pic="nao">Escolher essa ✅</button>
+  </div>
+</section>
+
+<!-- PÁGINA DETALHE: VOLTAR DE UBER -->
+<section id="pic-uber" class="card hidden">
+  <h1>🚗 Voltar pra casa de Uber</h1>
+  <p class="note text-sm">Sem problemas nenhum! O foco total vai ser aproveitar o jantar e a nossa companhia. 😉✨</p>
+  <div class="opt sel">
+    <div class="flex items-center gap-2">
+      <b>Prefiro voltar pra casa de Uber à noite 🚗</b>
+    </div>
+    <span class="block text-xs font-normal text-rose-800 mt-1">Depois do jantar eu te coloco no Uber e eu pago tua corrida para você voltar tranquila e em segurança pra casa.</span>
+  </div>
+  <div class="row">
+    <button class="btn sec" data-go="pic" data-back>⬅️ Voltar</button>
+    <button class="btn pri" data-confirm-pic="uber">Escolher essa ✅</button>
+  </div>
+</section>
+
+<section id="p3" class="card hidden">
+  <h1>Resumo do Nosso Date: 📝✨</h1>
+  <div class="bg-pink-50 rounded-2xl p-4 text-sm space-y-1">
+    <p>📅 <b id="s-dt"></b></p>
+    <p>🍴 <b id="s-rest"></b></p>
+    <p>🚗 <b>Uber por minha conta até a minha casa</b></p>
+    <p>💋 <b id="s-mot"></b></p>
+  </div>
+  <p id="aviso" class="note text-sm font-medium text-rose-900 hidden">🔥 <b>Aviso importante:</b> A ataxia afeta só um pouco o equilíbrio ao andar.. meu desempenho sexual continua 100% intacto e garantido! 😉</p>
+  <div class="space-y-2 text-sm">
+    <p>📚 <b>Literatura e Leituras:</b> Últimos livros e indicações.</p>
+    <p>🍣 <b>Gastronomia:</b> Avaliação dos restaurantes de Fortaleza.</p>
+    <p>🎬 <b>Filmes e Séries:</b> O que você tem assistido e recomenda.</p>
+    <p>✈️ <b>Viagens:</b> Lugares que já visitou e os que quer conhecer.</p>
+    <p>💼 <b>Trabalho e Sonhos:</b> O que você faz e para onde quer ir.</p>
+    <p>☕ <b>Boas Conversas:</b> Planos, hobbies e boas risadas sem pressa.</p>
+  </div>
+  <div id="seal" class="rounded-2xl text-white p-4 text-center text-sm font-semibold"></div>
+  <div id="tip-box" class="note text-sm font-medium text-rose-900 hidden"></div>
+  <button id="conclude-yes" class="btn pri w-full">Concluir ✅</button>
+  <div class="row">
+    <button class="btn sec" data-go="pic" data-back>⬅️ Mudar ideia</button>
+    <button class="btn sec" data-reset>🔄 Refazer tudo</button>
+  </div>
+</section>
+
+<section id="done" class="card ctr hidden">
+  <div class="text-6xl">💌</div>
+  <h1>Até o nosso date, Barbara!!</h1>
+  <p>Sua resposta foi confirmada e sua pontuação registrada! ✨</p>
+  <button class="btn sec" data-reset>⬅️ Recomeçar</button>
+</section>
+</div>
+
+</main>
+
+<!-- TERMÔMETRO (só Barbara) -->
+<footer id="foot" class="fixed bottom-0 inset-x-0 z-40 bg-rose-950/95 backdrop-blur border-t border-pink-300/20 px-5 pt-4 pb-5">
+  <div class="max-w-md mx-auto">
+    <div class="flex justify-between text-xs font-bold text-pink-200 mb-1"><span>Termômetro do date</span><span id="score-n">0/13</span></div>
+    <div class="relative h-3 rounded-full bg-rose-900 mx-3">
+      <div id="bar" class="h-3 rounded-full bg-gradient-to-r from-pink-400 to-rose-300 transition-all duration-500" style="width:0%"></div>
+      <div id="star" class="absolute -top-2.5 text-2xl transition-all duration-500" style="left:0%;transform:translateX(-50%)">⭐️</div>
+    </div>
+    <p id="score-reason" class="text-xs text-pink-100 mt-3 min-h-[1rem]">Responda o convite para ganhar estrelas!</p>
+  </div>
+</footer>
+
+<script>
+const API='https://sheetdb.io/api/v1/akn2zy1h1dr0y';
+const SHEET='Barbara';
+const $=id=>document.getElementById(id);
+const CMG='Meu Quarto (Comigo)',SEM='Meu Quarto (Sem mim)',UBER='Voltar pra casa de Uber (por minha conta)';
+let S,score,M;
+const fresh=()=>({ata:null,date:'',time:'',rest:'',sim:false});
+
+// Pontos: ataxia 3 + data 2 + restaurante 2 + sim 3 = 10
+// Meu Quarto (Comigo) +3 = 13 | Meu Quarto (Sem mim) +2 = 12 | Voltar de Uber +1 = 11
+const calc=()=>{
+  let pts = (S.ata==='ok'?3:0)+(S.date?2:0)+(S.rest?2:0)+(S.sim?3:0);
+  if(M.motel===CMG) pts += 3;
+  else if(M.motel===SEM) pts += 2;
+  else if(M.motel===UBER) pts += 1;
+  return pts;
+};
+
+// Corações flutuantes
+for(let i=0;i<14;i++){
+  const h=document.createElement('div');h.className='heart';h.textContent=i%3?'❤️':'💖';
+  h.style.left=Math.random()*100+'%';h.style.fontSize=(16+Math.random()*28)+'px';
+  h.style.animationDuration=(12+Math.random()*14)+'s';h.style.animationDelay=(-Math.random()*20)+'s';
+  $('hearts').appendChild(h);
+}
+
+function celebrate(){
+  const o=$('celebrate');o.classList.remove('hidden');
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const cols=['#e30613','#ffffff','#b0000f','#ff4d5a'];
+  for(let i=0;i<90;i++){
+    const c=document.createElement('div');c.className='conf';
+    if(i%6===0){c.textContent='⭐️';}else{c.style.cssText+=`width:${6+Math.random()*8}px;height:${10+Math.random()*10}px;background:${cols[i%cols.length]};border-radius:2px`;}
+    o.appendChild(c);
+    const x=(Math.random()-.5)*window.innerWidth*1.1,up=-(window.innerHeight*(.35+Math.random()*.45)),r=Math.random()*900-450;
+    c.animate([{transform:'translate(0,0) rotate(0)',opacity:1},
+      {transform:`translate(${x*.6}px,${up}px) rotate(${r/2}deg)`,opacity:1,offset:.45},
+      {transform:`translate(${x}px,${window.innerHeight*.5}px) rotate(${r}deg)`,opacity:0}],
+      {duration:5500+Math.random()*3500,easing:'cubic-bezier(.2,.7,.4,1)',delay:Math.random()*700}).onfinish=()=>c.remove();
+  }
+}
+
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),2600);}
+
+function update(reason){
+  const n=calc(),d=n-score;score=n;
+  $('score-n').textContent=n+'/13';$('bar').style.width=n/13*100+'%';$('star').style.left=n/13*100+'%';
+  if(d>0){toast('⭐️ +'+d+' '+reason);$('score-reason').textContent='+'+d+' ponto'+(d>1?'s':'')+': '+reason;}
+  else if(d<0){$('score-reason').textContent='Pontuação ajustada: '+reason;}
+  if(n===13&&d>0)celebrate();
+}
+
+const VIEWS=['p1','no-s','refuse','pic','pic-sim','pic-nao','pic-uber','p3','done'];
+let cur='p1';
+function go(id){cur=id;VIEWS.forEach(v=>$(v).classList.toggle('hidden',v!==id));window.scrollTo({top:0,behavior:'smooth'});}
+
+function resetM(){
+  M={est:null,motel:''};
+}
+
+function back(to){
+  if(cur==='pic'){S.sim=false;resetM();}
+  if((cur==='pic-sim'||cur==='pic-nao'||cur==='pic-uber')&&to==='pic'){resetM();}
+  if(cur==='p3'&&to==='pic'){resetM();}
+  $('celebrate').classList.add('hidden');
+  go(to);update('voltou uma etapa');
+}
+
+function mark(sel,attr,val){document.querySelectorAll(sel).forEach(b=>b.classList.toggle('sel',b.dataset[attr]===val));}
+
+function resetAll(){
+  S=fresh();score=0;resetM();$('celebrate').classList.add('hidden');
+  $('date').value='';$('time').value='';markCal();
+  document.querySelectorAll('#barbara .opt').forEach(b=>b.classList.remove('sel'));
+  lock(false);
+  $('score-n').textContent='0/13';$('bar').style.width='0%';$('star').style.left='0%';
+  $('score-reason').textContent='Responda o convite para ganhar estrelas!';
+  go('p1');
+}
+
+// Ataxia
+function lock(on){
+  ['blk-when','blk-where'].forEach(i=>{const e=$(i);e.classList.toggle('opacity-40',on);e.classList.toggle('pointer-events-none',on);e.toggleAttribute('inert',on);});
+  $('yes').disabled=on;
+}
+document.querySelectorAll('[data-ata]').forEach(b=>b.onclick=()=>{
+  S.ata=b.dataset.ata;mark('[data-ata]','ata',S.ata);
+  const res=S.ata==='res';
+  if(res){S.date='';S.time='';S.rest='';S.sim=false;$('date').value='';$('time').value='';markCal();mark('[data-rest]','rest','');$('err1').classList.add('hidden');}
+  lock(res);
+  update(res?'ressalvas anotadas: agora só o Não está disponível':'topou o ombro amigo 🤝');
+});
+
+// Calendário: Novembro 2026, só o dia 25 está disponível
+// 1º de Novembro de 2026 é Domingo (índice 6 na grade Seg..Dom)
+function markCal(){document.querySelectorAll('#cal [data-d]').forEach(b=>b.classList.toggle('sel',b.dataset.d===S.date));}
+for(let e=0;e<6;e++){$('cal').appendChild(document.createElement('div'));}
+for(let d=1;d<=30;d++){
+  const box=document.createElement('button');box.type='button';
+  const iso='2026-11-'+String(d).padStart(2,'0');
+  if(d!==25){
+    box.className='day off-date';box.disabled=true;box.textContent=d;
+  } else {
+    box.className='day';box.textContent=d;box.dataset.d=iso;
+    box.onclick=()=>{
+      const v=S.date===iso?'':iso;
+      S.date=v;$('date').value=v;markCal();
+      update(v?'data escolhida 📅':'data removida');
+    };
+  }
+  $('cal').appendChild(box);
+}
+$('time').onchange=e=>S.time=e.target.value;
+
+// Restaurante
+document.querySelectorAll('[data-rest]').forEach(b=>{
+  const pick=ev=>{
+    if(ev.target.closest('a')||b.classList.contains('off'))return;
+    S.rest=b.dataset.rest;mark('[data-rest]','rest',S.rest);update('restaurante escolhido 🍴');
+  };
+  b.onclick=pick;b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(e);}};
+});
+
+// Sim / Não
+$('yes').onclick=()=>{
+  const miss=[];
+  if(S.ata!=='ok')miss.push('aceite a parte da ataxia');
+  if(!S.date)miss.push('escolha a data');
+  if(!S.time)miss.push('escolha o horário');
+  if(!S.rest)miss.push('escolha o restaurante');
+  const e=$('err1');
+  if(miss.length){e.textContent='Falta: '+miss.join(', ')+'.';e.classList.remove('hidden');return;}
+  e.classList.add('hidden');S.sim=true;go('pic');update('disse SIM! 💖');
+};
+$('no').onclick=()=>{S.sim=false;$('err1').classList.add('hidden');go('no-s');};
+
+function summary(){
+  const [y,m,d]=S.date.split('-');
+  $('s-dt').textContent=`${d}/${m}/${y} às ${S.time}`;
+  $('s-rest').textContent=S.rest;
+  $('s-mot').textContent=M.est==='sim'?'Esticadinha: '+M.motel:(M.motel?'Depois do jantar: '+M.motel:'Esticadinha: fica para a próxima 😉');
+  const n=calc();
+  const sl = n===13
+    ? ['☭🔥',' Esquerdista e Safada de Elite (Faz o L!)','Pontuação máxima, você zerou a safadeza e garantiu a revolução completa sem pressa! 😈','#9f1239']
+    : n===12
+      ? ['☭😏',' Quase Esquerdista de Elite','Você quase fez o L! 😉','#a21caf']
+      : ['😇',' Comportada da Direita','Comportada demais hoje! ✨','#b45309'];
+  $('aviso').classList.toggle('hidden',n!==13);
+  $('seal').style.background=sl[3];
+  $('seal').innerHTML=`<div class="text-4xl">${sl[0]}</div><div class="text-base font-bold mt-1">Selo ${sl[1]}</div><div class="mt-1">${n}/13 ⭐️</div><div class="mt-1 font-normal">${sl[2]}</div>`;
+
+  const tip=$('tip-box');
+  if(n===11 || n===12){
+    tip.textContent='💡 Dica: se escolher o Meu Quarto (Comigo), você faz o L e libera a revolução completa 😉';
+    tip.classList.remove('hidden');
+  } else {
+    tip.textContent='';
+    tip.classList.add('hidden');
+  }
+
+  go('p3');
+}
+
+// Envio para SheetDB
+async function send(resp){
+  const data={
+    data_envio:new Date().toLocaleString('pt-BR'),
+    resposta:resp,
+    ataxia:S.ata==='ok'?'Por mim tudo bem':(S.ata==='res'?'Tem ressalvas':''),
+    data_date:S.date,
+    horario:S.time,
+    restaurante:S.rest,
+    motel:M.motel,
+    pontos:calc()
+  };
+  try{
+    const r=await fetch(`${API}?sheet=${encodeURIComponent(SHEET)}`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({data})
+    });
+    return r.ok;
+  }catch(e){return false;}
+}
+
+async function conclude(btn,resp,next){
+  const t=btn.textContent;btn.disabled=true;btn.textContent='Enviando...';
+  const ok=await send(resp);btn.disabled=false;btn.textContent=t;
+  if(ok)go(next);else toast('Não consegui enviar. Tente de novo 🙏');
+}
+
+$('conclude-no').onclick=e=>conclude(e.currentTarget,'NÃO','refuse');
+$('conclude-yes').onclick=e=>conclude(e.currentTarget,'SIM','done');
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>b.hasAttribute('data-back')?back(b.dataset.go):go(b.dataset.go));
+document.querySelectorAll('[data-reset]').forEach(b=>b.onclick=resetAll);
+
+// Clicou no botão -> já abre a página só dele (e ainda não pontua até confirmar lá dentro)
+document.querySelectorAll('[data-pic-open]').forEach(b=>b.onclick=()=>{
+  const choice=b.dataset.picOpen;
+  if(choice==='sim') go('pic-sim');
+  else if(choice==='nao') go('pic-nao');
+  else go('pic-uber');
+});
+
+// Confirma dentro da página individual -> pontua e vai pro resumo
+document.querySelectorAll('[data-confirm-pic]').forEach(b=>b.onclick=()=>{
+  const choice=b.dataset.confirmPic;
+  M.est=choice;
+  if(choice==='sim'){
+    M.motel=CMG;
+    update('escolheu Meu Quarto (Comigo) (FAZ O L!) 🌟');
+  } else if(choice==='nao'){
+    M.motel=SEM;
+    update('escolheu Meu Quarto (Sem mim) 🛏️');
+  } else {
+    M.motel=UBER;
+    update('prefere voltar de Uber à noite 🚗');
+  }
+  summary();
+});
+
+resetAll();
+</script>
+</body>
+</html>
